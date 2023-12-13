@@ -1,0 +1,83 @@
+.info {
+    background-image: url("https://img.freepik.com/vector-gratis/fondo-monocromatico-blanco-degradado_23-2149001594.jpg?w=1380&t=st=1701055397~exp=1701055997~hmac=72b6a2f836f1df8a81ad5953c6772db4e081d4e0bf3f046b26760f952ce1562a");
+    /* background-size: cover; */
+    background-size: 100vw 80vh;
+    ;
+
+
+}
+
+.parte2 h1 {
+    margin-top: 80px;
+}
+
+/* Estilos normales para pantallas más grandes que 768px */
+.carousel-inner img {
+    height: 800px;
+}
+
+/* Estilos para pantallas más pequeñas o iguales a 768px */
+@media (max-width: 767px) {
+    .carousel-inner img {
+        height: 400px;
+    }
+
+    .parte2 h1 {
+        margin-top: 0px;
+    }
+
+    .our-services .col-md-3 {
+        margin-left: 30px;
+        margin-bottom: 20px;
+    }
+
+    .our-services .imagen {
+        display: none;
+    }
+}
+.contactos {
+    background-image: url("https://img.freepik.com/vector-gratis/fondo-blanco-gris-brillante-lineas-onduladas_1017-25101.jpg?w=1380&t=st=1701944045~exp=1701944645~hmac=88a7a680b565321b842c3e19a92fc6c78bafd67c3c7d21737cca20401ea16d0e");
+    background-size: 100vw 100vh;
+    background-repeat: no-repeat;
+}
+
+
+.gallery {
+    background-color: #ffffff;
+}
+
+/* EFECTO EN LAS IMAGENES ZOOM */
+zoomP {
+    /* Aumentamos la anchura y altura durante 2 segundos * */
+    transition: width 1.1s, height 1.1s, transform 1.1s;
+    -moz-transition: width 1.1s, height 1.1s, -moz-transform 1.1s;
+    -webkit-transition: width 1.2s, height 1.1s, -webkit-transform 1.1s;
+    -o-transition: width 1.1s, height 1.1s, -o-transform 1.1s;
+}
+
+.zoomP:hover {
+    /* /tranformamos el elemento al pasar el mouse por encima al doble de */
+    /* su tamano con scale(2).* */
+    transform: scale(1.05);
+    /*(150%zoom Note:if the zoom is too large,it will go outside of the viewport)*/
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05)
+}
+
+#carouselExampleIndicators {
+    max-height: 500px;
+    /* Ajusta este valor según sea necesario */
+    margin: auto;
+    /* Centra el carrusel en la página */
+}
+
+
+.card-img-top {
+    max-height: 100%;
+    /* Esto ajustará el tamaño máximo de las imágenes en el carrusel */
+    width: auto;
+    /* Esto garantiza que las imágenes conserven su relación de aspecto original */
+}
+.footer{
+    background-color: #F3AC10;
+}
