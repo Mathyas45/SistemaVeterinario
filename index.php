@@ -1,139 +1,49 @@
-<!DOCTYPE html>
-<html lang="es">
+<?php
+include('app/config.php');
+include('layout/parte1.php');
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema Odontológico</title>
+include('app/controlador/productos/listadoProductosControlador.php');
+?>
 
-    <!--  CSS -->
-    <link rel="stylesheet" href="public/style/style.css">
-    <!-- Bootstrap CSS -->
-    <link href="public/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <!-- Bootstrap icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
 
-    <!-- JQUERY -->
-    <script src="public/js/jquery-3.7.1.min.js"></script>
 
-</head>
-
-<body>
-    <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container">
-            <!-- Navbar Brand -->
-            <nav class="navbar bg-body-tertiary">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="#">
-                        <img src="public/img/355326638_591241446524239_5854611868236442444_n.jpg" alt="Logo" width="40"
-                            height="30" class="d-inline-block align-text-top">
-                        Rivas Dent
-                    </a>
-                </div>
-            </nav>
-            <!-- Navbar Toggler -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <!-- Navbar Collapse -->
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <!-- Navbar Items -->
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link btn btn-outline-info ml-2" aria-current="page" href="#"><i
-                                class="bi bi-house-door-fill"></i>Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn btn-outline-info" href="#">Link</a>
-                    </li>
-                    <!-- Navbar Dropdown -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle btn btn-outline-info" href="#" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Dropdown
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn btn-outline-info" aria-disabled="true">Disabled</a>
-                    </li>
-                </ul>
-                <!-- Navbar Search -->
-                <div class="d-flex" role="search">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle btn btn-outline-warning" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                Ingresar
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="login">Iniciar Sesión</a></li>
-                                <li><a class="dropdown-item" href="login/registro.php">Registrarme</a></li>
-                            </ul>
-                        </li>
-
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <section style=>
-        <div class="container">
+    <section>
+        <div class="container-fluid">
             <div id="carouselExampleCaptions" class="carousel slide">
                 <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
-                        aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
-                        aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
-                        aria-label="Slide 3"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
                 </div>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="https://img.freepik.com/foto-gratis/cerca-veterinario-cuidando-perro_23-2149100186.jpg?w=1380&t=st=1701055167~exp=1701055767~hmac=cf6254bdc0a89a96877d8c71aa440679fc3ac0b2be52fd7e132560098b4f2da6"
-                            height="800dp" width="10dp" class="d-block w-100" alt="...">
+                        <img src="https://img.freepik.com/foto-gratis/cerca-veterinario-cuidando-perro_23-2149100186.jpg?w=1380&t=st=1701055167~exp=1701055767~hmac=cf6254bdc0a89a96877d8c71aa440679fc3ac0b2be52fd7e132560098b4f2da6" height="800dp" width="10dp" class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block">
-                            <a href="" class="btn btn-primary mb-5 btn-lg">Reservar Cita</a><br>
+                            <a href="<?php echo $URL."/reservas.php"; ?>" class="btn btn-primary mb-5 btn-lg">Reservar Cita</a><br>
                             <h5>First slide label</h5>
                             <p>Some representative placeholder content for the first slide.</p>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="https://img.freepik.com/vector-gratis/fondo-plano-dia-internacional-gato_52683-86986.jpg?w=1380&t=st=1701054612~exp=1701055212~hmac=e95c3bfba8c779577abb12936c6f585f00e09f0cae97f53046fda8a143994ee5"
-                            height="800dp" class="d-block w-100" alt="...">
+                        <img src="https://img.freepik.com/vector-gratis/fondo-plano-dia-internacional-gato_52683-86986.jpg?w=1380&t=st=1701054612~exp=1701055212~hmac=e95c3bfba8c779577abb12936c6f585f00e09f0cae97f53046fda8a143994ee5" height="800dp" class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block">
                             <h5>Second slide label</h5>
                             <p>Some representative placeholder content for the second slide.</p>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="https://cdn.pixabay.com/photo/2012/02/27/17/00/puppy-17473_1280.jpg" height="800dp"
-                            class="d-block w-100" alt="...">
+                        <img src="https://cdn.pixabay.com/photo/2012/02/27/17/00/puppy-17473_1280.jpg" height="800dp" class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block">
                             <h5>Third slide label</h5>
                             <p>Some representative placeholder content for the third slide.</p>
                         </div>
                     </div>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
-                    data-bs-slide="prev">
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Previous</span>
                 </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
-                    data-bs-slide="next">
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
                 </button>
@@ -154,8 +64,7 @@
             <div class="row">
                 <div class="col-md-3  mx-auto">
                     <div class="card">
-                        <img src="https://img.freepik.com/foto-gratis/cerca-veterinario-cuidando-perro_23-2149100197.jpg?w=1380&t=st=1701065356~exp=1701065956~hmac=16217a0ee5ff864beeaf8edfb6d8fa00b098f12762af9836a13a8a4da54469a9"
-                            class="card-img-top" alt="...">
+                        <img src="https://img.freepik.com/foto-gratis/cerca-veterinario-cuidando-perro_23-2149100197.jpg?w=1380&t=st=1701065356~exp=1701065956~hmac=16217a0ee5ff864beeaf8edfb6d8fa00b098f12762af9836a13a8a4da54469a9" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">Card titleee</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk
@@ -168,8 +77,7 @@
 
                 <div class="col-md-3  mx-auto">
                     <div class="card">
-                        <img src="https://img.freepik.com/foto-gratis/acercamiento-al-medico-veterinario-cuidando-mascota_23-2149267934.jpg?w=1380&t=st=1701065263~exp=1701065863~hmac=6ffca0c90978897d6c86e1ab44e34612d9175516e2324a70d7d3b50d5b0692d8"
-                            class="card-img-top" alt="...">
+                        <img src="https://img.freepik.com/foto-gratis/acercamiento-al-medico-veterinario-cuidando-mascota_23-2149267934.jpg?w=1380&t=st=1701065263~exp=1701065863~hmac=6ffca0c90978897d6c86e1ab44e34612d9175516e2324a70d7d3b50d5b0692d8" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">Card title</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the
@@ -181,8 +89,7 @@
                 </div>
                 <div class="col-md-3 mx-auto">
                     <div class="card">
-                        <img src="https://img.freepik.com/foto-gratis/cerca-veterinario-cuidando-perro_23-2149100223.jpg?size=626&ext=jpg"
-                            class="card-img-top" alt="...">
+                        <img src="https://img.freepik.com/foto-gratis/cerca-veterinario-cuidando-perro_23-2149100223.jpg?size=626&ext=jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">Card title</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the
@@ -196,20 +103,17 @@
 
                 <div class="imagen col-md-3 mx-auto">
 
-                    <img src="https://cdn.pixabay.com/photo/2013/07/12/14/17/stethoscope-148159_1280.png" alt=""
-                        width="160%">
+                    <img src="https://cdn.pixabay.com/photo/2013/07/12/14/17/stethoscope-148159_1280.png" alt="" width="160%">
                 </div>
                 <br>
                 <div class="imagen col-md-3">
 
-                    <img src="https://img.freepik.com/vector-gratis/establecer-tratamiento-dental-e-higiene-protesis_24877-55019.jpg?w=740&t=st=1701855400~exp=1701856000~hmac=513742a1b3679bc57256fb95729f50f5dd686b719047efe0ed6823738d9969a0"
-                        alt="" width="100%">
+                    <img src="https://img.freepik.com/vector-gratis/establecer-tratamiento-dental-e-higiene-protesis_24877-55019.jpg?w=740&t=st=1701855400~exp=1701856000~hmac=513742a1b3679bc57256fb95729f50f5dd686b719047efe0ed6823738d9969a0" alt="" width="100%">
 
                 </div>
                 <div class="col-md-3  mx-auto">
                     <div class="card">
-                        <img src="https://img.freepik.com/foto-gratis/cerca-veterinario-cuidando-perro_23-2149100197.jpg?w=1380&t=st=1701065356~exp=1701065956~hmac=16217a0ee5ff864beeaf8edfb6d8fa00b098f12762af9836a13a8a4da54469a9"
-                            class="card-img-top" alt="...">
+                        <img src="https://img.freepik.com/foto-gratis/cerca-veterinario-cuidando-perro_23-2149100197.jpg?w=1380&t=st=1701065356~exp=1701065956~hmac=16217a0ee5ff864beeaf8edfb6d8fa00b098f12762af9836a13a8a4da54469a9" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">Card titleee</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk
@@ -222,8 +126,7 @@
 
                 <div class="col-md-3  mx-auto">
                     <div class="card">
-                        <img src="https://img.freepik.com/foto-gratis/acercamiento-al-medico-veterinario-cuidando-mascota_23-2149267934.jpg?w=1380&t=st=1701065263~exp=1701065863~hmac=6ffca0c90978897d6c86e1ab44e34612d9175516e2324a70d7d3b50d5b0692d8"
-                            class="card-img-top" alt="...">
+                        <img src="https://img.freepik.com/foto-gratis/acercamiento-al-medico-veterinario-cuidando-mascota_23-2149267934.jpg?w=1380&t=st=1701065263~exp=1701065863~hmac=6ffca0c90978897d6c86e1ab44e34612d9175516e2324a70d7d3b50d5b0692d8" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">Card title</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the
@@ -235,8 +138,7 @@
                 </div>
                 <div class="col-md-3 mx-auto">
                     <div class="card">
-                        <img src="https://img.freepik.com/foto-gratis/cerca-veterinario-cuidando-perro_23-2149100223.jpg?size=626&ext=jpg"
-                            class="card-img-top" alt="...">
+                        <img src="https://img.freepik.com/foto-gratis/cerca-veterinario-cuidando-perro_23-2149100223.jpg?size=626&ext=jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">Card title</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the
@@ -247,6 +149,46 @@
                     </div>
 
                 </div>
+
+            </div>
+
+        </div>
+        <br>
+    </section>
+
+    <section class="our-services">
+        <div class="container">
+            <div class="row"></div>
+            <div class="col-md-12 mb-5 mt-5">
+                <center>
+                    <h1>Nuestros <span class="text-primary">Productos</span></h1>
+                </center>
+            </div>
+
+
+            <div class="row">
+
+                <?php
+                foreach ($productos as $producto) { ?>
+
+                    <div class="col-md-3">
+                        <div class="card">
+                            <img src="<?= $URL."/public/img/productos/".$producto['imagen']; ?>" height="350px" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title"><?=$producto['nombre_producto']; ?></h5>
+                                <p class="card-text"><?=$producto['descripcion']; ?></p>
+                                <p class="card-text">Precio: S/.<?=$producto['precio_venta']; ?></p>
+                            </div>
+
+                        </div>
+                    </div>
+                    <br>
+                <?php
+                }
+                ?>
+
+
+
 
             </div>
 
@@ -286,8 +228,7 @@
             <div class="row">
                 <div class="col-md-5 zoomP">
                     <center>
-                        <img src="https://cdn.pixabay.com/photo/2019/05/07/12/53/vet-4185908_1280.jpg" width="100%"
-                            height="300" alt="">
+                        <img src="https://cdn.pixabay.com/photo/2019/05/07/12/53/vet-4185908_1280.jpg" width="100%" height="300" alt="">
                     </center>
                     <br>
                 </div>
@@ -295,8 +236,7 @@
 
                 <div class="col-md-7 zoomP">
                     <center>
-                        <img src="https://img.freepik.com/foto-gratis/retrato-grupo-adorables-cachorros_53876-64778.jpg?w=1800&t=st=1701069720~exp=1701070320~hmac=1408751f88d680a9a0163df31cb8fb9a1a50e9b05fce296d40f86e3e2f349872"
-                            width="100%" height="300px" alt="">
+                        <img src="https://img.freepik.com/foto-gratis/retrato-grupo-adorables-cachorros_53876-64778.jpg?w=1800&t=st=1701069720~exp=1701070320~hmac=1408751f88d680a9a0163df31cb8fb9a1a50e9b05fce296d40f86e3e2f349872" width="100%" height="300px" alt="">
                     </center>
                     <br>
                 </div>
@@ -305,21 +245,18 @@
             <div class="row">
                 <div class="col-md-4 zoomP">
                     <center>
-                        <img src="https://cdn.pixabay.com/photo/2016/07/19/22/59/veterinary-1529191_1280.jpg" alt=""
-                            width="100%" height="300px">
+                        <img src="https://cdn.pixabay.com/photo/2016/07/19/22/59/veterinary-1529191_1280.jpg" alt="" width="100%" height="300px">
                     </center>
                     <br>
                 </div>
                 <div class="col-md-4 zoomP">
                     <center>
-                        <img src="https://cdn.pixabay.com/photo/2020/03/17/10/13/monitoring-4939621_640.jpg" alt=""
-                            width="100%" height="300px">
+                        <img src="https://cdn.pixabay.com/photo/2020/03/17/10/13/monitoring-4939621_640.jpg" alt="" width="100%" height="300px">
                     </center>
                     <br>
                 </div>
                 <div class="col-md-4  zoomP">
-                    <center><img src="https://cdn.pixabay.com/photo/2022/05/15/12/35/vet-7197464_640.png" alt=""
-                            width="100%" height="300px">
+                    <center><img src="https://cdn.pixabay.com/photo/2022/05/15/12/35/vet-7197464_640.png" alt="" width="100%" height="300px">
                     </center>
                     <br>
                 </div>
@@ -484,27 +421,26 @@
 
 
                     <div class="card  mb-5">
-                        <div class="card-header" style="background-color: #F3AC10;">
+                        <div class="card-header">
                             <center><b>Rellena los campos</b></center>
                         </div>
-                        <div class="card-body" style="background-color: #F3AC10;">
+                        <div class="card-body  bg-primary">
                             <form action="" method="post">
                                 <div class="form-group">
-                                    <label for="">Nombres y Apellidos</label>
-                                    <input class="form-control" type="text" placeholder="Escribe tu nombre..." required>
+                                    <label for="" class="mb-2 text-white" >Nombres y Apellidos</label>
+                                    <input class="form-control mb-2" type="text" placeholder="Escribe tu nombre..." required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="">Correo</label>
-                                    <input class="form-control" type="email" placeholder="Correo electrónico..."
-                                        required>
+                                    <label for="" class="mb-2 text-white">Correo</label>
+                                    <input class="form-control mb-2" type="email" placeholder="Correo electrónico..." required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="">Mensaje</label>
+                                    <label for="" class="mb-2 text-white">Mensaje</label>
                                     <textarea class="form-control" name="" id="" cols="30" rows="5"></textarea>
                                 </div>
                                 <hr>
                                 <div class="d-grip gap-2">
-                                    <button class="btn btn-primary" type="submit">Enviar</button>
+                                    <button class="btn btn-light"  style="width: 100%;" type="submit">Enviar</button>
                                 </div>
                             </form>
                         </div>
@@ -520,91 +456,15 @@
             <h1>Encuentranos <span class="text-primary">Aquí</span></h1>
         </center>
         <br>
-        <iframe
-            src="https://www.google.com/maps/embed?pb=!4v1701846676888!6m8!1m7!1srXzwvM2MhgDgz4-HIhlXzg!2m2!1d-12.05765891883217!2d-75.20831458877494!3f297.00053573501293!4f-11.126712929002949!5f0.4000000000000002"
-            width="100%" height="650" style="border:0;" allowfullscreen="" loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!4v1701846676888!6m8!1m7!1srXzwvM2MhgDgz4-HIhlXzg!2m2!1d-12.05765891883217!2d-75.20831458877494!3f297.00053573501293!4f-11.126712929002949!5f0.4000000000000002" width="100%" height="650" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
 
         </div>
 
     </section>
 
+<?php
 
-    <footer>
-        <div class="container-fluid mt-4">
+include('layout/parte2.php');
 
-            <div class="row">
-                <div class="col-md-4">
-                    <img src="public/img//logo1.jpg" width="90%" alt="">
-                </div>
-
-                <div class="col-md-4">
-                    <br>
-                    <h1><b>Rivas Dent</b></h1>
-
-                    <a href="" class="btn btn-outline-warning mb-3">
-                        <h3>Inicio</h3>
-                    </a>
-                    <br>
-                    <a href="" class="btn btn-outline-warning mb-3">
-                        <h3>Nuestros Servicios</h3>
-                    </a>
-                    <br>
-                    <a href="" class="btn btn-outline-warning mb-3">
-                        <h3>Sobre Nosotros</h3>
-                    </a>
-                    <br>
-                    <a href="" class="btn btn-outline-warning mb-3">
-                        <h3>Comentarios</h3>
-                    </a>
-                    <br>
-                    <a href="" class="btn btn-outline-warning mb-3">
-                        <h3>Galeria</h3>
-                    </a>
-                    <br>
-                    <a href="" class="btn btn-outline-warning mb-3">
-                        <h3>Tienda en linea</h3>
-                    </a>
-
-                </div>
-                <div class="col-md-4">
-                    <br>
-                    <h1><b>Redes Sociales</b></h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</p>
-                    <a href="" class="btn btn-outline-primary me-5"><i class="bi bi-facebook"></i> Facebook</a>
-
-                    <a href="" class="btn btn-outline-info" style="outline-color: #d63384
-                    ;"><i class="bi bi-instagram"></i> Instagam</a>
-                    <br>
-                    <br>
-                    <a href="" class="btn btn-outline-danger ms-1 me-5"><i class="bi bi-youtube"></i> Youtube</a>
-
-                    <a href="" class="btn btn-outline-success me-5"><i class="bi bi-whatsapp"></i> Whatsapp</a>
-                    <br>
-                    <br>
-                    <br>
-                    <h1>Contáctanos</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</p>
-                    <p><i class="bi bi-geo-alt-fill"></i> Av. Los Incas 1234, Lima, Perú</p>
-                    <p><i class="bi bi-telephone-fill"></i> +51 123 456 789</p>
-                    <p><i class="bi bi-envelope-fill"> mathyascoronado@gmail.com</i>
-                </div>
-
-            </div>
-        </div>
-        <div class="container-fluid" style="background-color: #F3AC10 ;">
-            <br>
-            <center>
-                <h5>© Todos los derechos reservados Coax.Inc - 2023</h5>
-            </center>
-            <br>
-        </div>
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
-</body>
-
-</html>
+?>

@@ -34,7 +34,12 @@
     .our-services .imagen {
         display: none;
     }
+
+    .ingresar {
+        margin-left: 150px;
+    }
 }
+
 .contactos {
     background-image: url("https://img.freepik.com/vector-gratis/fondo-blanco-gris-brillante-lineas-onduladas_1017-25101.jpg?w=1380&t=st=1701944045~exp=1701944645~hmac=88a7a680b565321b842c3e19a92fc6c78bafd67c3c7d21737cca20401ea16d0e");
     background-size: 100vw 100vh;
@@ -78,6 +83,7 @@ zoomP {
     width: auto;
     /* Esto garantiza que las imágenes conserven su relación de aspecto original */
 }
-.footer{
+
+.footer {
     background-color: #F3AC10;
 }
