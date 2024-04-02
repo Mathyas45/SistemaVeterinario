@@ -43,7 +43,7 @@ if ($contador > 0) {
 
         if ($sentencia->execute()) {
             session_start();
-            $_SESSION['mensaje'] = "Se registró de manera correcta";
+            $_SESSION['mensaje'] = "Se registró de manera correcta, ya puede reservar su cita      m.";
             $_SESSION['icono'] = 'success';
 
             //loguearse luego de registrarse

@@ -33,7 +33,7 @@ if (isset($_SESSION['sesion_email'])) {
     </title>
 
     <!--  CSS -->
-    <link rel="stylesheet" href="public/style/style.css">
+    <link rel="stylesheet" href="../public/style/style.css">
     <!-- Bootstrap CSS -->
     <link href="<?= $URL; ?>/public/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <!-- Bootstrap icons -->
@@ -49,89 +49,65 @@ if (isset($_SESSION['sesion_email'])) {
 <body>
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-            <!-- Navbar Brand -->
-            <nav class="navbar bg-body-tertiary">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="<?= $URL; ?>">
-                        <img src="public/img/355326638_591241446524239_5854611868236442444_n.jpg" alt="Logo" width="40" height="30" class="d-inline-block align-text-top">
-                        Rivas Dent
-                    </a>
-                </div>
-            </nav>
-            <!-- Navbar Toggler -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <!-- Navbar Collapse -->
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <!-- Navbar Items -->
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link btn btn-outline-info ml-2" aria-current="page" href="#"><i class="bi bi-house-door-fill"></i>Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn btn-outline-info" href="#">Link</a>
-                    </li>
-                    <!-- Navbar Dropdown -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle btn btn-outline-info" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Dropdown
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn btn-outline-info" aria-disabled="true">Disabled</a>
-                    </li>
-                </ul>
-                <!-- Navbar Search -->
-                <div class="d-flex" style="margin-right: 58px;">
-                    <?php
-                    if ($email_sesion == "") {
-                        // echo"no pasó por el login";
-                    ?>
-                        <ul class="navbar-nav me-auto mb-lg-0">
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle btn btn-outline-info ingresar" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Ingresar
-                                </a>
-                                <ul class="dropdown-menu">
-
-                                    <li><a class="dropdown-item" href="login">Iniciar Sesión</a></li>
-                                    <li><a class="dropdown-item" href="login/registro.php">Registrarme</a></li>
-                                </ul>
-                            </li>
-
-                        </ul>
-                    <?php
-                    } else {
-                        // echo" pasó por el login";
-                    ?>
-
-                        <ul class="navbar-nav me-auto mb-lg-0">
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle btn btn-outline-info ingresar" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Bienvenido: <?= $email_sesion; ?>
-                                </a>
-                                <ul class="dropdown-menu">
-
-                                    <li><a class="dropdown-item" href="<?= $URL; ?>/app/controlador/login/cerrarSesion.php">Cerrar Sesión</a></li>
-                                </ul>
-                            </li>
-
-                        </ul>
-                    <?php
-                    }
-                    ?>
-
-                </div>
+    <div class="container-fluid">
+        <!-- Navbar Brand -->
+        <nav class="navbar bg-body-tertiary">
+            <div class="container-fluid">
+                <a style="color:#212A4B;" class="navbar-brand" href="<?= $URL; ?>">
+                    <img src="public/img/355326638_591241446524239_5854611868236442444_n.jpg" alt="Logo" width="40" height="30" class="d-inline-block align-text-top">
+                    Rivas Dent
+                </a>
+            </div>
+        </nav>
+        <!-- Navbar Toggler -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Navbar Collapse -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- Navbar Items -->
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-start"> <!-- Agrega la clase text-start aquí -->
+                <li class="nav-item">
+                    <a class="nav-link btn btn-outline-primary" href="#">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-outline-primary" href="#">Reservar Cita</a>
+                </li>
+                <!-- Aquí puedes agregar más elementos del navbar si es necesario -->
+            </ul>
+            <!-- Navbar Search -->
+            <div class="d-flex" style="margin-right: 58px;">
+                <?php
+                if ($email_sesion == "") {
+                ?>
+                    <ul class="navbar-nav me-auto mb-lg-0">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle btn btn-outline-info ingresar" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Ingresar
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="login">Iniciar Sesión</a></li>
+                                <li><a class="dropdown-item" href="login/registro.php">Registrarme</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                <?php
+                } else {
+                ?>
+                    <ul class="navbar-nav me-auto mb-lg-0">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle btn btn-outline-info ingresar text-start" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> <!-- Agrega la clase text-start aquí -->
+                                Bienvenido: <?= $email_sesion; ?>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="<?= $URL; ?>/app/controlador/login/cerrarSesion.php">Cerrar Sesión</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                <?php
+                }
+                ?>
             </div>
         </div>
-    </nav>
+    </div>
+</nav>

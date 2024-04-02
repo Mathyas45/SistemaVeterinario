@@ -16,7 +16,7 @@ try {
 }
 
 
-$URL = "http://localhost/sistemadeveterinaria";
+$URL = "/sistemadeveterinaria";
 
 // Establecer la zona horaria para Perú
 date_default_timezone_set('America/Lima');

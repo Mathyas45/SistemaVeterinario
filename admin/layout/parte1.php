@@ -116,10 +116,9 @@ if (isset($_SESSION['sesion_email'])) {
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="<?php echo $URL; ?>/admin" class="brand-link">
-                <img src="<?php echo $URL; ?>/public/templates/AdminLTE-3.2.0/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+                <img src="<?php echo $URL; ?>/public/img/355326638_591241446524239_5854611868236442444_n.jpg" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">Rivas Dent</span>
             </a>
-
             <!-- Sidebar -->
             <div class="sidebar">
                 <!-- Sidebar user panel (optional) -->

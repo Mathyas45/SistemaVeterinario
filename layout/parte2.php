@@ -12,7 +12,7 @@
                     <br>
                     <h1><b>Rivas Dent</b></h1>
 
-                    <a href="" class="btn btn-outline-primary mb-3">
+                    <a href="#our-services" class="btn btn-outline-primary mb-3">
                         <h3>Inicio</h3>
                     </a>
                     <br>

@@ -69,7 +69,24 @@ include('../app/config.php');
                             <a class="btn btn-danger" style="width:100%" href="../index.php"><i class="bi bi-x-lg"></i> Volver</a>
                         </form>
 
-
+                        <?php
+                        session_start();
+                        if (isset($_SESSION['mensaje'])) {
+                            $mensaje = $_SESSION['mensaje'];
+                        ?>
+                            <script>
+                                Swal.fire({
+                                    position: "top-end",
+                                    icon: "error",
+                                    title: "<?= $mensaje; ?>",
+                                    showConfirmButton: false,
+                                    timer: 3500
+                                });
+                            </script>
+                        <?php
+                            session_destroy();
+                        }
+                        ?>
 
 
 
@@ -99,7 +116,5 @@ include('../app/config.php');
     <!-- AdminLTE App -->
     <script src="<?php echo $URL; ?>/public/templates/AdminLTE-3.2.0/dist/js/adminlte.min.js"></script>
 </body>
-<?php
-include('../admin/layout/mensaje.php'); ?>
 
 </html>

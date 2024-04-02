@@ -14,6 +14,7 @@ section {
     text-align: start;
     letter-spacing: normal;
 }
+
 .parte2 h1 {
     margin-top: 80px;
 }
@@ -47,9 +48,13 @@ section {
     }
    /* Estilos para dispositivos móviles */
     .carousel-item img {
-        max-height: 500px; /* Ajusta la altura máxima de la imagen para dispositivos móviles */
+        max-height: 300px; /* Ajusta la altura máxima de la imagen para dispositivos móviles */
         width: auto; /* Permite que el ancho de la imagen se ajuste automáticamente */
-}
+    }
+
+    #porque .col-md-4 {
+        margin-top: 85px; /* Aplica margen solo en resoluciones mayores o iguales a 768px (tablets y desktops) */
+        }
 
 }
 
