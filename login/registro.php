@@ -24,7 +24,7 @@ include('../layout/parte1.php');
                         <input type="text" class="form-control" name="nombre_completo" value="<?php echo isset($_POST['nombre_completo']) ? $_POST['nombre_completo'] : ''; ?>">
                         <br>
                         <label for="">Correo Electrónico</label>
-                        <input type="email" class="form-control" name="email" value="<?php echo isset($_POST['email']) ? $_POST['email'] : ''; ?>">
+                        <input type="text" class="form-control" name="email" value="<?php echo isset($_POST['email']) ? $_POST['email'] : ''; ?>">
                         <br>
                         <label for="">Contraseña</label>
                         <input type="password" class="form-control" name="password" placeholder="Introduce tu contraseña">

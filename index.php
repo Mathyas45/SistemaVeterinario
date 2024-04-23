@@ -24,12 +24,12 @@ include('app/controlador/productos/listadoProductosControlador.php');
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="https://scontent.fjau1-1.fna.fbcdn.net/v/t39.30808-6/336910848_1929509320734967_1451710792047092954_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeF_ARH8bkWbQ0nBrDPD2bMHZ9R2IM4C3Kln1HYgzgLcqfnK4mH9yTxaVvrKUtYXJQXSLjVPWygKdOsNZ5p44l5m&_nc_ohc=VV5PaLZrfV0AX8kxUFU&_nc_ht=scontent.fjau1-1.fna&oh=00_AfD2_NxogIjjA1o2ftLQWsRgFyDLXC7eWjF5kVDnaZ02MQ&oe=66103849" class="d-block w-100" alt="...">
+                    <img src="<?= $URL; ?>https://scontent.fjau1-1.fna.fbcdn.net/v/t39.30808-6/358117520_600039672311083_4375042145186645704_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeEch6IMMboNwoq9TGtWSlwmQKyaZPj-mohArJpk-P6aiEbhHsk1Gy1OggNdXbWcIYLNc33fdGV3f37zrXYkJ42W&_nc_ohc=CepyHkKiXnUAb4nLEFn&_nc_ht=scontent.fjau1-1.fna&oh=00_AfD_PJMvpD3vVYS1m1gBxfXWNrQ5ctJ7XDk1_3pnII_DEw&oe=661C9179" class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="https://scontent.fjau1-1.fna.fbcdn.net/v/t39.30808-6/358117520_600039672311083_4375042145186645704_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeEch6IMMboNwoq9TGtWSlwmQKyaZPj-mohArJpk-P6aiEbhHsk1Gy1OggNdXbWcIYLNc33fdGV3f37zrXYkJ42W&_nc_ohc=xYgBbWb6cfUAX8NINIj&_nc_ht=scontent.fjau1-1.fna&oh=00_AfBq2gnUhhEtEQ2uadwhNy9sWtYPZLHJPuAg7lDJHFRyjA&oe=66100B39" class="d-block w-100" alt="...">
+                    <img src="<?= $URL; ?>https://scontent.fjau1-1.fna.fbcdn.net/v/t39.30808-6/358117520_600039672311083_4375042145186645704_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeEch6IMMboNwoq9TGtWSlwmQKyaZPj-mohArJpk-P6aiEbhHsk1Gy1OggNdXbWcIYLNc33fdGV3f37zrXYkJ42W&_nc_ohc=xYgBbWb6cfUAX8NINIj&_nc_ht=scontent.fjau1-1.fna&oh=00_AfBq2gnUhhEtEQ2uadwhNy9sWtYPZLHJPuAg7lDJHFRyjA&oe=66100B39" class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                     </div>
                 </div>
@@ -68,8 +68,8 @@ include('app/controlador/productos/listadoProductosControlador.php');
                 <div class="card">
                     <img src="https://scontent.fjau1-1.fna.fbcdn.net/v/t39.30808-6/406494955_683803873934662_4182351338752615668_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeHetRyhafrdNpuhfUKSVsZZ7GpAXTlalvHsakBdOVqW8f2PuCuhojZwEu1z_RDCaKAWV0QkUC6Nmz0Kl6pXqFjw&_nc_ohc=z_BOX9tvy_YAX_e-4ah&_nc_ht=scontent.fjau1-1.fna&oh=00_AfDF5rGRbMYM1tzm_McpMbPBoBiKt2KzS-tyKX-O8VcYLg&oe=6611158E" class="card-img-top" alt="...">
                     <div class="card-body">
-                    <h5 class="card-title">Carillas dentales</h5>
-                    <p class="card-text">La limpieza dental es un procedimiento que ayuda a mantener la salud bucal eliminando la placa y el sarro de los dientes, previniendo así enfermedades como la caries y la gingivitis.</p>
+                        <h5 class="card-title">Carillas dentales</h5>
+                        <p class="card-text">La limpieza dental es un procedimiento que ayuda a mantener la salud bucal eliminando la placa y el sarro de los dientes, previniendo así enfermedades como la caries y la gingivitis.</p>
 
                     </div>
 
@@ -86,33 +86,33 @@ include('app/controlador/productos/listadoProductosControlador.php');
                     </div>
                 </div>
             </div>
-<br>
+            <br>
 
             <div class="col-md-3 mx-auto">
                 <div class="card">
                     <img src="https://scontent.fjau1-1.fna.fbcdn.net/v/t39.30808-6/409183797_685243393790710_2315095368627960587_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeEKjLeiUjlt3dX_ZEpr34RmUW7hxLBBzhhRbuHEsEHOGJ1L3rlru7VyolW_T0MfjMH71K-kq9SUCsZjs_qVBeMO&_nc_ohc=iByfka7JN-cAX9joTIZ&_nc_ht=scontent.fjau1-1.fna&oh=00_AfClSzVcg4ifOj-FJ0Mq5xCeh244OqnzKuu9GdHZBTzTHw&oe=66110DC4" class="card-img-top" alt="...">
                     <div class="card-body">
-                    <h5 class="card-title">Tratamiento de Caries</h5>
-                    <p class="card-text">El tratamiento de caries consiste en eliminar la parte dañada del diente y rellenar el área afectada con un material restaurador, como amalgama o resina compuesta, para restaurar su función y estética.</p>
+                        <h5 class="card-title">Tratamiento de Caries</h5>
+                        <p class="card-text">El tratamiento de caries consiste en eliminar la parte dañada del diente y rellenar el área afectada con un material restaurador, como amalgama o resina compuesta, para restaurar su función y estética.</p>
 
                     </div>
                 </div>
 
             </div>
-            
+
             <div class="imagen col-md-3 mx-auto">
 
                 <img src="https://cdn.pixabay.com/photo/2015/10/31/12/06/tooth-1015409_1280.jpg" alt="" width="160%">
             </div>
-            
+
             <br>
             <div class="imagen col-md-3">
 
                 <img src="https://img.freepik.com/vector-gratis/establecer-tratamiento-dental-e-higiene-protesis_24877-55019.jpg?w=740&t=st=1701855400~exp=1701856000~hmac=513742a1b3679bc57256fb95729f50f5dd686b719047efe0ed6823738d9969a0" alt="" width="100%">
 
             </div>
-            
-            
+
+
 
             <div class="col-md-3  mx-auto  mt-4">
                 <div class="card">
@@ -130,8 +130,8 @@ include('app/controlador/productos/listadoProductosControlador.php');
                 <div class="card">
                     <img src="https://scontent.fjau1-1.fna.fbcdn.net/v/t39.30808-6/406500956_683803947267988_3523087909843796647_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeGvoWR48c_VkYVtBnqWB1nfL7T0rsp7hVMvtPSuynuFUxWWyuuAbisVss8ThGsH-gWkoAwfL9dKU1aXKuXxDUQj&_nc_ohc=TrFajgGZMQcAX__peNB&_nc_ht=scontent.fjau1-1.fna&oh=00_AfAToz4EEzDEiuU4dENaElSDs8CS0KzuAqVrp47cybZ-XA&oe=661115BC" class="card-img-top" alt="...">
                     <div class="card-body">
-                    <h5 class="card-title">Implantes Dentales</h5>
-                    <p class="card-text">Los implantes dentales son una opción para reemplazar dientes perdidos. Consisten en colocar un tornillo de titanio en el hueso maxilar o mandibular y luego colocar una corona artificial sobre él para restaurar la función y estética dental.</p>
+                        <h5 class="card-title">Implantes Dentales</h5>
+                        <p class="card-text">Los implantes dentales son una opción para reemplazar dientes perdidos. Consisten en colocar un tornillo de titanio en el hueso maxilar o mandibular y luego colocar una corona artificial sobre él para restaurar la función y estética dental.</p>
 
                         <a href="#" class="btn btn-primary">Go somewhere</a>
                     </div>
@@ -508,8 +508,8 @@ include('app/controlador/productos/listadoProductosControlador.php');
 
                             </b></center>
                     </div>
-                    <div class="card-body " >
-                        <form action="" method="post" >
+                    <div class="card-body ">
+                        <form action="" method="post">
                             <div class="form-group">
                                 <label for="" class="mb-2 text-white">Nombres y Apellidos</label>
                                 <input class="form-control mb-2" type="text" placeholder="Escribe tu nombre..." required>
@@ -555,7 +555,7 @@ include('app/controlador/productos/listadoProductosControlador.php');
                     </div>
                 </div>
                 <div class="card mt-3">
-                    
+
                     <div class="card-body">
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.0000000000005!2d-76.9760736851489!3d-12.1190001914181!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c8b1b1b1b1b1%3A0x7b1b1b1b1b1b1b1!2sAv.%20Los%20Incas%201234%2C%20Cercado%20de%20Lima%2015011!5e0!3m2!1ses-419!2spe!4v1634266820734!5m2!1ses-419!2spe" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                     </div>
@@ -654,3 +654,16 @@ include('app/controlador/productos/listadoProductosControlador.php');
 </body>
 
 </html>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var myCarousel = new bootstrap.Carousel(document.getElementById('carouselExampleCaptions'), {
+            interval: 2000,
+            wrap: true
+        });
+
+        // Iniciar el intervalo manualmente
+        myCarousel.cycle();
+    });
+</script>
+
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">

@@ -1,9 +1,12 @@
 <?php
 include('app/config.php');
 include('layout/parte1.php');
-?>
 
+?>
+<!-- Botón para probar el sonido
+<button onclick="playAlertSound()">Reproducir sonido de prueba</button> -->
 <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js'></script>
+
 
 <script>
     var a;

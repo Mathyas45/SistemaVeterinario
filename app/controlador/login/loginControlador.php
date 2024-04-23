@@ -2,10 +2,10 @@
 
 include('../../config.php');
 
-$email = $_POST['email'];
+$username = $_POST['email'];
 $password = $_POST['password'];
 
-$sql = "SELECT * FROM tb_usuarios WHERE email = '$email' ";
+$sql = "SELECT * FROM tb_usuarios WHERE username = '$username' ";
 $query = $pdo->prepare($sql);
 $query->execute();
 $usuarios = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -21,7 +21,7 @@ $hash = $password_tabla;
 if (($contador > 0)  && (password_verify($password, $hash))) {
     echo "bienvenido al sistema";
     session_start();
-    $_SESSION['sesion_email'] = $email;
+    $_SESSION['sesion_email'] = $username;
 
     if ($password_cargo == 'Administrador') {
         session_start();
@@ -29,6 +29,7 @@ if (($contador > 0)  && (password_verify($password, $hash))) {
         $_SESSION['icono'] = "success";
 
         header('Location: ' . $URL . '/admin');
+        
     } else {
         header('Location: ' . $URL . '/reservas.php');
         session_start();

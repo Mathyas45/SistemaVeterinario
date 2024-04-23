@@ -12,4 +12,3 @@ if (isset($_GET['id_usuario'])) {
 // Redirecciona a la página principal después de eliminar el usuario
 header("Location: index.php");
 exit();
-?>

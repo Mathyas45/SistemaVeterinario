@@ -1,6 +1,6 @@
 <?php
 
-$sql  = "SELECT *, usu.email as email FROM tb_reservas as res INNER JOIN tb_usuarios as usu ON usu.id_usuario = res.id_usuario";
+$sql  = "SELECT *, usu.username as email FROM tb_reservas as res INNER JOIN tb_usuarios as usu ON usu.id_usuario = res.id_usuario";
 $query = $pdo->prepare($sql);
 $query->execute();
 $reservas = $query->fetchAll(PDO::FETCH_ASSOC);

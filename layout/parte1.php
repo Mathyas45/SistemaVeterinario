@@ -5,14 +5,14 @@ if (isset($_SESSION['sesion_email'])) {
     // echo "ha pasado por el login";
 
     $email_sesion = $_SESSION['sesion_email'];
-    $sql  = "SELECT * FROM tb_usuarios where email = '$email_sesion' ";
+    $sql  = "SELECT * FROM tb_usuarios where username = '$email_sesion' ";
     $query = $pdo->prepare($sql);
     $query->execute();
     $usuarios = $query->fetchAll(PDO::FETCH_ASSOC);
 
     foreach ($usuarios as $usuario) {
         $id_usuario_sesion = $usuario['id_usuario'];
-        $nombre_completo_sesion = $usuario['nombre_completo'];
+        $nombre_completo_sesion = $usuario['nombre'];
     }
 } else {
     // echo "no ha pasado por el login";

@@ -5,6 +5,63 @@ include('../app/controlador/usuarios/usuariosControlador.php');
 include('../app/controlador/productos/listadoProductosControlador.php');
 include('../app/controlador/reservas/listadoReservasControlador.php');
 ?>
+<script>
+window.onload = function() {
+    // Verificar si el usuario ha dado permiso previamente
+    var permiso = localStorage.getItem('permisoSonido');
+    if (permiso === null) {
+        // Mostrar un mensaje de confirmación
+        var consentimiento = confirm("¿Deseas permitir la reproducción automática de sonido para recibir notificaciones de nuevas reservas?");
+        if (consentimiento) {
+            // Guardar la preferencia del usuario
+            localStorage.setItem('permisoSonido', 'true');
+        }
+    }
+};
+
+function checkForNewReservations() {
+    // Verificar si el usuario ha dado permiso para la reproducción automática
+    var permiso = localStorage.getItem('permisoSonido');
+    if (permiso === 'true') {
+        // Realizar la verificación y reproducir el sonido si es necesario
+        // Tu lógica para verificar nuevas reservas y reproducir sonido aquí
+    }
+}
+
+// Crear un nuevo objeto de Audio y cargar el sonido
+var audio = new Audio('../public/sonidos/livechat-129007.mp3');
+
+function checkForNewReservations() {
+    // Realizar una solicitud AJAX al servidor para verificar nuevas reservas
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                // Si la respuesta es exitosa, verificar si hay nuevas reservas
+                var response = JSON.parse(xhr.responseText);
+                if (response.newReservations) {
+                    // Reproducir el sonido
+                    playAlertSound();
+                }
+            } else {
+                console.error('Error al verificar nuevas reservas');
+            }
+        }
+    };
+    xhr.open('GET', 'check_new_reservations.php', true);
+    xhr.send();
+}
+
+function playAlertSound() {
+    // Reproducir el sonido
+    audio.play();
+}
+
+
+// Verificar nuevas reservas cada 60 segundos
+setInterval(checkForNewReservations, 60000);
+</script>
+
 
 
 <h2>Bienvenido al sistema - <?= $nombre_completo_sesion; ?></h2>
@@ -77,4 +134,4 @@ include('../app/controlador/reservas/listadoReservasControlador.php');
 </div>
 
 
-<?php include('../admin/layout/parte2.php');
+<?php include('../admin/layout/parte2.php'); ?>

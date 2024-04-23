@@ -13,8 +13,8 @@ $end = $fecha_cita;
 $color = "#2324ff";
 
 $sentencia = $pdo->prepare('INSERT INTO tb_reservas
-(id_usuario,nombre_mascota,tipo_servicio,fecha_cita,hora_cita,title,start,end,color, fyh_creacion)
-VALUES ( :id_usuario,:nombre_mascota,:tipo_servicio,:fecha_cita,:hora_cita,:title,:start,:end,:color,:fyh_creacion)');
+(id_usuario,nombre_mascota,tipo_servicio,fecha_cita,hora_cita,title,start,end,color, fyh_creacion,h_creacion)
+VALUES ( :id_usuario,:nombre_mascota,:tipo_servicio,:fecha_cita,:hora_cita,:title,:start,:end,:color,:fyh_creacion,:h_creacion)');
 
 $sentencia->bindParam(':id_usuario', $id_usuario);
 $sentencia->bindParam(':nombre_mascota', $nombre_mascota);
@@ -26,16 +26,20 @@ $sentencia->bindParam(':start', $start);
 $sentencia->bindParam(':end', $end);
 $sentencia->bindParam(':color', $color);
 $sentencia->bindParam('fyh_creacion', $fyh_creacion);
+$sentencia->bindParam('h_creacion', $hora);
+
+
 
 if ($sentencia->execute()) {
     session_start();
     $_SESSION['mensaje'] = "Se reservó la cita de manera correcta";
     $_SESSION['icono'] = 'success';
     header('Location: ' . $URL . '/reservas.php');
+    echo '<script>parent.playAlertSound();</script>'; // Llama a la función playAlertSound() en el archivo index
 } else {
     session_start();
-
     $_SESSION['mensaje'] = "Error al registrar el usuario ";
     $_SESSION['icono'] = 'error';
     header('Location: ' . $URL . '/reservas.php');
 }
+

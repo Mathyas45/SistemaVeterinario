@@ -20,4 +20,6 @@ $URL = "/sistemadeveterinaria";
 
 // Establecer la zona horaria para Perú
 date_default_timezone_set('America/Lima');
+$fecha = date('Y-m-d');
 $fyh_creacion = date('Y-m-d H:i:s');
+$hora = date('H:i:s');
