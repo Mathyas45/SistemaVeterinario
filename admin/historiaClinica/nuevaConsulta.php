@@ -1,20 +1,12 @@
-<?php include('../../app/config.php');
+<?php 
+include('../../app/config.php');
 include('../layout/parte1.php');
 $id_paciente = $_GET['id_paciente'];
-include('../../app/controlador/historiaClinica/historiaClinicaPacientesShowControlador.php'); ?>
+include('../../app/controlador/historiaClinica/historiaClinicaPacientesShowControlador.php'); 
+?>
 
 <div class="container-fluid">
-
     <div class="row mt-3">
-        <!-- <div class="col-md-12">
-            <div class="card card-outline card-primary">
-                <div class="card-body d-flex justify-content-between align-items-center">
-                    <h1>Nueva Consulta</h1>
-
-                </div>
-            </div>
-        </div> -->
-
         <div class="col-md-1"> </div>
         <div class="col-md-10 mt-5">
             <div class="card card-outline card-primary mt-lg-2">
@@ -32,10 +24,7 @@ include('../../app/controlador/historiaClinica/historiaClinicaPacientesShowContr
                     <form action="./../../app/controlador/historiaClinica/historiaClinicaNuevaControlador.php" method="post" enctype="multipart/form-data">
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="padecimiento" role="tabpanel" aria-labelledby="padecimiento-tab">
-                                <!-- Formulario para notas de padecimiento -->
-
                                 <div class="row bg-white">
-
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="notas_padecimiento">Paciente</label>
@@ -66,9 +55,6 @@ include('../../app/controlador/historiaClinica/historiaClinicaPacientesShowContr
                                             <label>Médico responsable</label>
                                             <input type="text" class="form-control" name="medico" id="medico">
                                         </div>
-
-
-
                                         <div class="form-group">
                                             <label for="notas_padecimiento">Diagnostico</label>
                                             <input class="form-control" id="diagnostico" name="diagnostico" required></input>
@@ -81,38 +67,29 @@ include('../../app/controlador/historiaClinica/historiaClinicaPacientesShowContr
                                     <div class="col-md-6">
                                         <div id="formulario">
                                             <div class="form-group" id="contenedor-archivos">
-
                                                 <label for="id_paciente">Resultados de laboratorio:</label>
-                                                <input type="file" class="form-control-file" id="resultados_laboratorio" name="resultados_laboratorio[]">
+                                                <div id="archivos">
+                                                    <input type="file" class="form-control-file archivo" name="resultados_laboratorio[]">
+                                                </div>
                                                 <br>
-
-                                                <button type="button" class="btn btn-primary" id="agregar-archivo">Agregar Archivo</button>
-
                                             </div>
+                                            <button type="button" class="btn btn-primary" id="agregar-archivo">Agregar Archivo</button>
                                         </div>
                                     </div>
-
-
                                 </div>
-
-
                             </div>
                             <div class="tab-pane fade" id="tratamiento" role="tabpanel" aria-labelledby="tratamiento-tab">
-                                <!-- Formulario para notas de tratamiento -->
                                 <div class="form-group">
                                     <div class="row bg-white">
-
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="notas_padecimiento">Paciente</label>
                                                 <input class="form-control" value="<?= $nombre_completo ?>" disabled></input>
                                             </div>
-
                                             <div class="form-group">
                                                 <label>Solicitud de nuevos examenes</label>
                                                 <input type="text" class="form-control" name="examenes" id="examenes">
                                             </div>
-
                                             <div class="form-group">
                                                 <label for="notas_padecimiento">Tratamiento</label>
                                                 <input class="form-control" id="tratamiento" name="tratamiento"></input>
@@ -121,7 +98,6 @@ include('../../app/controlador/historiaClinica/historiaClinicaPacientesShowContr
                                                 <label for="duracion">Duración del tratamiento</label>
                                                 <input class="form-control" id="duracion_tratamiento" name="duracion_tratamiento"></input>
                                             </div>
-
                                         </div>
                                         <div class="col-md-6">
                                             <div id="formulario">
@@ -140,7 +116,7 @@ include('../../app/controlador/historiaClinica/historiaClinicaPacientesShowContr
                                                         <select class="form-control" name="tipo_servicio" id="tipo_servicio" >
                                                             <option value="">Seleccione una opción</option>
                                                             <option value="control">Control</option>
-                                                            <option value="revaaluación">Revaaluación</option>
+                                                            <option value="revaluación">Revaaluación</option>
                                                         </select>
                                                     </div>
                                                     <div class="row">
@@ -150,7 +126,6 @@ include('../../app/controlador/historiaClinica/historiaClinicaPacientesShowContr
                                                                 <label>Próxima cita</label>
                                                                 <input type="date" class="form-control" name="fecha" id="fecha">
                                                             </div>
-
                                                         </div>
                                                         <div class="col-md-5">
                                                             <div class="form-group">
@@ -169,17 +144,13 @@ include('../../app/controlador/historiaClinica/historiaClinicaPacientesShowContr
                                                             </div>
                                                         </div>
                                                     </div>
-
                                                 </div>
                                             </div>
-
-
                                         </div>
                                         <br>
                                         <button type="submit" class="btn btn-primary btn-block mt-5">Guardar Consulta</button>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                         <br>
@@ -187,15 +158,13 @@ include('../../app/controlador/historiaClinica/historiaClinicaPacientesShowContr
                 </div>
             </div>
         </div>
-
     </div>
-
 </div>
 
-
-
-<?php include('../layout/parte2.php');
-include('../layout/mensaje.php'); ?>
+<?php 
+include('../layout/parte2.php');
+include('../layout/mensaje.php'); 
+?>
 
 <script>
     $(document).ready(function() {
@@ -205,10 +174,30 @@ include('../layout/mensaje.php'); ?>
         // Agregar un nuevo campo de entrada de archivos cuando se hace clic en el botón "Agregar Archivo"
         $('#agregar-archivo').click(function() {
             contador++;
-            $('<div class="form-group">' +
-                '<label for="resultados_laboratorio' + contador + '">Resultados de laboratorio:</label>' +
-                '<input type="file" class="form-control-file archivo" name="resultados_laboratorio[]" id="resultados_laboratorio' + contador + '" multiple>' +
-                '</div>').appendTo('#formulario #contenedor-archivos');
+            if (contador === 0) {
+                $('<div class="form-group">' +
+                    '<label for="resultados_laboratorio' + contador + '">Resultados de laboratorio:</label>' +
+                    '<div id="archivos">' +
+                    '<input type="file" class="form-control-file archivo" name="resultados_laboratorio[]">' +
+                    '</div>' +
+                    '<br>' +
+                    '</div>').appendTo('#formulario #contenedor-archivos');
+            } else {
+                $('<div class="form-group">' +
+                    '<label for="resultados_laboratorio' + contador + '">Resultados de laboratorio:</label>' +
+                    '<div id="archivos">' +
+                    '<input type="file" class="form-control-file archivo" name="resultados_laboratorio[]">' +
+                    '<button type="button" class="btn btn-danger eliminar_archivo">Borrar</button>' +
+                    '</div>' +
+                    '<br>' +
+                    '</div>').appendTo('#formulario #contenedor-archivos');
+            }
         });
+
+        // Eliminar un campo de archivo
+        $(document).on('click', '.eliminar_archivo', function() {
+            $(this).parent().remove();
+        });
+
     });
 </script>

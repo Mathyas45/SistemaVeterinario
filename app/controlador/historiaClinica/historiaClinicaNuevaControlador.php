@@ -40,8 +40,6 @@ if (!empty($hora) && !empty($fecha)) {
             window.history.back();
         </script><?php
                 } else {
-                    // Si no hay reserva para la fecha y hora seleccionadas, continuar con el proceso de guardar la consulta
-
                     // Obtener el id del paciente
                     $id_paciente = $_POST['id_paciente'];
 
@@ -55,9 +53,27 @@ if (!empty($hora) && !empty($fecha)) {
                     if ($resultado_usuario) {
                         $id_usuario = $resultado_usuario['id_usuario'];
 
+                        // Preparar la consulta SQL para insertar la historia clínica en la tabla tb_historias
+                        $sentencia_historia = $pdo->prepare('INSERT INTO tb_historias (paciente_id, motivo_consulta, fecha_consulta, medico_responsable, diagnostico, notas_padecimiento, tratamiento, duracion_tratamiento, medicamentos, notas_tratamiento) 
+                                                VALUES (:id_paciente, :motivo_consulta, :fecha_consulta, :medico_responsable, :diagnostico, :notas_padecimiento, :tratamiento, :duracion_tratamiento, :medicamentos, :notas_tratamiento)');
+                        $sentencia_historia->bindParam(':id_paciente', $id_paciente);
+                        $sentencia_historia->bindParam(':motivo_consulta', $motivo_consulta);
+                        $sentencia_historia->bindParam(':fecha_consulta', $fecha_consulta);
+                        $sentencia_historia->bindParam(':medico_responsable', $medico_responsable);
+                        $sentencia_historia->bindParam(':diagnostico', $diagnostico);
+                        $sentencia_historia->bindParam(':notas_padecimiento', $notas_padecimiento);
+                        $sentencia_historia->bindParam(':tratamiento', $tratamiento);
+                        $sentencia_historia->bindParam(':duracion_tratamiento', $duracion_tratamiento);
+                        $sentencia_historia->bindParam(':medicamentos', $medicamentos);
+                        $sentencia_historia->bindParam(':notas_tratamiento', $notas_tratamiento);
+                        $sentencia_historia->execute();
+
+                        // Obtenemos el ID de la última inserción
+                        $id_historia = $pdo->lastInsertId();
+
                         // Preparar la consulta SQL para insertar la reserva en la tabla tb_reservas
-                        $sentencia_reserva = $pdo->prepare('INSERT INTO tb_reservas (id_usuario, nombre_mascota, tipo_servicio, fecha_cita, hora_cita, title, start, end, color, fyh_creacion) 
-                        VALUES (:id_usuario, :nombre_mascota, :tipo_servicio, :fecha_cita, :hora_cita, :title, :start, :end, :color, :fyh_creacion)');
+                        $sentencia_reserva = $pdo->prepare('INSERT INTO tb_reservas (id_usuario, nombre_mascota, tipo_servicio, fecha_cita, hora_cita, title, start, end, color, fyh_creacion, historia_id) 
+                                                VALUES (:id_usuario, :nombre_mascota, :tipo_servicio, :fecha_cita, :hora_cita, :title, :start, :end, :color, :fyh_creacion, :historia_id)');
 
                         $sentencia_reserva->bindParam(':id_usuario', $id_usuario);
                         $sentencia_reserva->bindParam(':nombre_mascota', $nombre_paciente);
@@ -69,26 +85,11 @@ if (!empty($hora) && !empty($fecha)) {
                         $sentencia_reserva->bindParam(':end', $fecha);
                         $sentencia_reserva->bindParam(':color', $color); // Color por defecto
                         $sentencia_reserva->bindParam(':fyh_creacion', $fyh_creacion); // Fecha y hora actual
-
-                        if ($sentencia_reserva->execute()) {
-                            // Insertar la consulta en la tabla tb_historias
-                            $sentencia_historia = $pdo->prepare('INSERT INTO tb_historias (paciente_id, motivo_consulta, fecha_consulta, medico_responsable, diagnostico, notas_padecimiento, tratamiento, duracion_tratamiento, medicamentos, notas_tratamiento) 
-                                                    VALUES (:id_paciente, :motivo_consulta, :fecha_consulta, :medico_responsable, :diagnostico, :notas_padecimiento, :tratamiento, :duracion_tratamiento, :medicamentos, :notas_tratamiento)');
-                            $sentencia_historia->bindParam(':id_paciente', $id_paciente);
-                            $sentencia_historia->bindParam(':motivo_consulta', $motivo_consulta);
-                            $sentencia_historia->bindParam(':fecha_consulta', $fecha_consulta);
-                            $sentencia_historia->bindParam(':medico_responsable', $medico_responsable);
-                            $sentencia_historia->bindParam(':diagnostico', $diagnostico);
-                            $sentencia_historia->bindParam(':notas_padecimiento', $notas_padecimiento);
-                            $sentencia_historia->bindParam(':tratamiento', $tratamiento);
-                            $sentencia_historia->bindParam(':duracion_tratamiento', $duracion_tratamiento);
-                            $sentencia_historia->bindParam(':medicamentos', $medicamentos);
-                            $sentencia_historia->bindParam(':notas_tratamiento', $notas_tratamiento);
-                            $sentencia_historia->execute();
-
+                        $sentencia_reserva->bindParam(':historia_id', $id_historia);
                             // Obtenemos el ID de la última inserción
                             $historia_id = $pdo->lastInsertId();
 
+                        if ($sentencia_reserva->execute()) {
                             // Subir los archivos
                             $numero_archivos = count($_FILES['resultados_laboratorio']['name']);
                             for ($i = 0; $i < $numero_archivos; $i++) {
@@ -98,7 +99,7 @@ if (!empty($hora) && !empty($fecha)) {
                                 move_uploaded_file($archivo_temporal, $ruta_archivo);
 
                                 // Guardar la información de los archivos en la base de datos
-                                $sentencia_archivo = $pdo->prepare('INSERT INTO tb_pruebas (historia_id, nombre_prueba, url_prueba,fecha_creacion) VALUES (:historia_id, :nombre_prueba, :url_prueba, :fecha_creacion)');
+                                $sentencia_archivo = $pdo->prepare('INSERT INTO tb_pruebas (historia_id, nombre_prueba, url_prueba,fecha_creacion) VALUES (:historia_id, :nombre_prueba, :url_prueba,:fecha_creacion)');
                                 $sentencia_archivo->bindParam(':historia_id', $historia_id);
                                 $sentencia_archivo->bindParam(':nombre_prueba', $nombre_archivo);
                                 $sentencia_archivo->bindParam(':url_prueba', $ruta_archivo);
@@ -106,7 +107,6 @@ if (!empty($hora) && !empty($fecha)) {
 
                                 $sentencia_archivo->execute();
                             }
-
                             session_start();
                             $_SESSION['mensaje'] = "Se registró la historia clínica del paciente " . $nombre_paciente . " correctamente.";
                             $_SESSION['icono'] = 'success';
@@ -119,7 +119,8 @@ if (!empty($hora) && !empty($fecha)) {
                             header('Location: ' . $URL . '/admin/historiaClinica/historiaPaciente.php?id_Paciente=' . $id_paciente);
                             exit();
                         }
-                    } else {
+                    }
+                    else {
                         // Si no se encontró un usuario asociado al paciente, mostrar un mensaje de error o realizar alguna acción
                         session_start();
                         $_SESSION['mensaje'] = "Error: No se encontró un usuario asociado al paciente. Por favor, revise los datos ingresados.";
@@ -168,6 +169,13 @@ if (!empty($hora) && !empty($fecha)) {
                     session_start();
                     $_SESSION['mensaje'] = "Se registró la historia clínica del paciente " . $nombre_paciente . " correctamente.";
                     $_SESSION['icono'] = 'success';
+                    header('Location: ' . $URL . '/admin/historiaClinica/historiaPaciente.php?id_Paciente=' . $id_paciente);
+                    exit();
+                }
+                else {
+                    session_start();
+                    $_SESSION['mensaje'] = "Error al registrar la historia clínica del paciente " . $nombre_paciente;
+                    $_SESSION['icono'] = 'error';
                     header('Location: ' . $URL . '/admin/historiaClinica/historiaPaciente.php?id_Paciente=' . $id_paciente);
                     exit();
                 }

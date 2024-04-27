@@ -80,7 +80,7 @@ $edad = $fecha_nacimiento_dt->diff($fecha_dt)->y;
                                         <td>
                                             <center>
                                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                                    <a href="show.php?id_usuario=<?php echo $id_usuario; ?>" class="btn btn-outline-primary"><i class="bi bi-eye-fill"></i> Ver</a>
+                                                <a href="showConsulta.php?id_historia=<?php echo $id_historia; ?>" class="btn btn-outline-primary"><i class="bi bi-eye-fill"></i> Ver</a>
                                                     <a href="update.php?id_usuario=<?php echo $id_usuario; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i> Editar</a>
                                                     <a href="#" class="btn btn-outline-primary" onclick="confirmarEliminacion(<?php echo $id_usuario; ?>);">
                                                         <i class="bi bi-trash3-fill"></i> Eliminar
@@ -183,7 +183,7 @@ $edad = $fecha_nacimiento_dt->diff($fecha_dt)->y;
                                         <td>
                                             <center>
                                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                                    <a href="show.php?id_usuario=<?php echo $id_usuario; ?>" class="btn btn-outline-primary"><i class="bi bi-eye-fill"></i> Ver</a>
+                                                    <a href="showConsulta.php?id_historia=<?php echo $id_historia; ?>" class="btn btn-outline-primary"><i class="bi bi-eye-fill"></i> Ver</a>
                                                     <a href="#" class="btn btn-outline-primary" onclick="confirmarEliminacion(<?php echo $id_usuario; ?>);">
                                                         <i class="bi bi-trash3-fill"></i> Eliminar
                                                     </a>
