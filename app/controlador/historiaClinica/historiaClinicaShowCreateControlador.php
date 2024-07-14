@@ -1,6 +1,5 @@
 <?php
 
-
 $sql= "SELECT * FROM tb_historias as historias 
 INNER JOIN tb_pruebas as pruebas ON pruebas.historia_id = historias.id_historia
 INNER JOIN tb_reservas as reservas ON reservas.historia_id = historias.id_historia
@@ -25,6 +24,5 @@ foreach( $historias as $historia ){
     $tipo_servicio = $historia['tipo_servicio'];
     $fecha = $historia['fecha_cita'];
     $hora = $historia['hora_cita']; 
-
 }
 

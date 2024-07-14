@@ -61,7 +61,7 @@ include('../../app/controlador/historiaClinica/historiaClinicaPacientesShowContr
                                         </div>
                                         <div class="form-group">
                                             <label for="notas_padecimiento">Notas de Padecimiento:</label>
-                                            <textarea class="form-control" id="notas_padecimiento" name="notas_padecimiento" rows="4"></textarea>
+                                            <textarea class="form-control" id="notas_padecimiento" name="notas_padecimiento" rows="4" style="resize: none;"></textarea>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -107,7 +107,7 @@ include('../../app/controlador/historiaClinica/historiaClinicaPacientesShowContr
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="notas_padecimiento">Notas de Tratamiento</label>
-                                                    <textarea class="form-control" id="notas_tratamiento" name="notas_tratamiento" rows="4"></textarea>
+                                                    <textarea  style="resize: none;" class="form-control" id="notas_tratamiento" name="notas_tratamiento" rows="4"></textarea>
                                                 </div>
                                                 <br>
                                                 <div class="card">
