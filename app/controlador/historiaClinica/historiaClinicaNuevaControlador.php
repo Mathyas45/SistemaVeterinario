@@ -19,7 +19,7 @@ $hora = $_POST['hora'];
 $color = "#2324ff";
 $tipo_servicio = $_POST['tipo_servicio'];
 $resultados_laboratorio = $_FILES['resultados_laboratorio']; // Array de archivos subidos
-$estado = "1";
+
 
 // Verificar si se proporcionó algún valor para la hora
 if (!empty($hora) && !empty($fecha)) {
@@ -166,15 +166,19 @@ if (!empty($hora) && !empty($fecha)) {
 
                         // Ajustar la ruta de archivo para que tenga solo dos niveles de directorio ".."
                         $ruta_archivo_rel = '../../public/archivosHistorias/' . $nombre_archivo_unico;
-
-                        // Guardar la información de los archivos en la base de datos
-                        $sentencia_archivo = $pdo->prepare('INSERT INTO tb_pruebas (historia_id, nombre_prueba, url_prueba, fecha_creacion,estado) VALUES (:historia_id, :nombre_prueba, :url_prueba, :fecha_creacion, :estado)');
-                        $sentencia_archivo->bindParam(':historia_id', $historia_id);
-                        $sentencia_archivo->bindParam(':nombre_prueba', $nombre_archivo);
-                        $sentencia_archivo->bindParam(':url_prueba', $ruta_archivo_rel); // Guardar la ruta ajustada en la base de datos
-                        $sentencia_archivo->bindParam(':fecha_creacion', $fyh_creacion);
-                        $sentencia_archivo->bindParam(':estado', $estado);
-                        $sentencia_archivo->execute();
+                        try {
+                            $estado = '1'; // Asegúrate de que el valor es correcto
+                            // Guardar la información de los archivos en la base de datos
+                            $sentencia_archivo = $pdo->prepare('INSERT INTO tb_pruebas (historia_id, nombre_prueba, url_prueba, fecha_creacion, estado) VALUES (:historia_id, :nombre_prueba, :url_prueba, :fecha_creacion, :estado)');
+                            $sentencia_archivo->bindParam(':historia_id', $historia_id);
+                            $sentencia_archivo->bindParam(':nombre_prueba', $nombre_archivo);
+                            $sentencia_archivo->bindParam(':url_prueba', $ruta_archivo_rel); // Guardar la ruta ajustada en la base de datos
+                            $sentencia_archivo->bindParam(':fecha_creacion', $fyh_creacion);
+                            $sentencia_archivo->bindValue(':estado', $estado); // Usar bindValue para el estado
+                            $sentencia_archivo->execute();
+                        } catch (PDOException $e) {
+                            echo 'Error: ' . $e->getMessage();
+                        }
                     }
 
                     session_start();

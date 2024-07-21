@@ -7,8 +7,9 @@ include('../../app/controlador/historiaClinica/historiaClinicaShowCreateControla
 ?>
 
 <div class="container-fluid">
+
     <div class="row mt-3">
-        <div class="col-md-1"></div>
+        <div class="col-md-1"> </div>
         <div class="col-md-10 mt-5">
             <div class="card card-outline card-primary mt-lg-2">
                 <div class="card-header">
@@ -17,7 +18,7 @@ include('../../app/controlador/historiaClinica/historiaClinicaShowCreateControla
                             <a class="nav-link active" id="padecimiento-tab" data-toggle="tab" href="#padecimiento" role="tab" aria-controls="padecimiento" aria-selected="true">Notas de Padecimiento</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="tratamiento-tab" data-toggle="tab" href="#tratamiento" role="tab" aria-controls="tratamiento" aria-selected="false">Tratamientos</a>
+                            <a class="nav-link" id="tratamiento-tab" data-toggle="tab" href="#tratamiento" role="tab" aria-controls="tratamiento" aria-selected="false">tratamientos</a>
                         </li>
                     </ul>
                 </div>
@@ -25,43 +26,47 @@ include('../../app/controlador/historiaClinica/historiaClinicaShowCreateControla
                     <form action="./../../app/controlador/historiaClinica/historiaClinicaUpdateControlador.php" method="post" enctype="multipart/form-data">
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="padecimiento" role="tabpanel" aria-labelledby="padecimiento-tab">
+                                <!-- Formulario para notas de padecimiento -->
+
                                 <div class="row bg-white">
+
                                     <div class="col-md-6">
                                         <h1>Actualizar Consulta:</h1>
                                         <div class="form-group">
                                             <label for="notas_padecimiento">Paciente</label>
-                                            <input class="form-control" name="nombre_paciente" id="nombre_paciente" value="<?= htmlspecialchars($nombre_completo) ?>"></input>
+                                            <input class="form-control" name="nombre_paciente" id="nombre_paciente" value="<?= $nombre_completo ?>"></input>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="motivo_consulta">Motivo de consulta</label>
-                                                    <input type="text" name="motivo_consulta" id="motivo_consulta" class="form-control" value="<?= htmlspecialchars($motivo_consulta) ?>">
+                                                    <input type="text" name="motivo_consulta" id="motivo_consulta" class="form-control" value="<?= $motivo_consulta ?>">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="fecha_consulta">Fecha de consulta</label>
-                                                    <input type="date" class="form-control" name="fecha_consulta" id="fecha_consulta" value="<?= htmlspecialchars($fecha_consulta) ?>">
+                                                    <input type="date" class="form-control" name="fecha_consulta" id="fecha_consulta" value="<?= $fecha_consulta ?>">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label>Médico responsable</label>
-                                            <input type="text" class="form-control" value="<?= htmlspecialchars($medico_responsable) ?>">
+                                            <input type="text" class="form-control" name="medico_responsable" id="medico_responsable" value="<?= $medico_responsable ?>">
                                         </div>
+
                                         <div class="form-group">
-                                            <label for="notas_padecimiento">Diagnóstico</label>
-                                            <input class="form-control" name="diagnostico" id="diagnostico" value="<?= htmlspecialchars($diagnostico) ?>"></input>
+                                            <label for="notas_padecimiento">Diagnostico</label>
+                                            <input class="form-control" name="diagnostico" id="diagnostico" value="<?= $diagnostico ?>"></input>
                                         </div>
                                         <div class="form-group">
                                             <label for="notas_padecimiento">Notas de Padecimiento:</label>
-                                            <textarea class="form-control" name="notas_padecimiento" id="notas_padecimiento" rows="4" style="resize: none;"><?= htmlspecialchars($notas_padecimiento) ?></textarea>
+                                            <textarea class="form-control" name="notas_padecimiento" id="notas_padecimiento" rows="4" style="resize: none;"><?= $notas_padecimiento ?> </textarea>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div id="formulario">
-                                            <div class="form-group" id="contenedor-archivos">
+                                            <div class="form-group" id="contenedor-archivos" name="contenedor-archivos">
                                                 <label for="id_paciente">Resultados de laboratorio:</label>
                                                 <ul>
                                                     <?php if (!empty($historiass1)) : ?>
@@ -85,71 +90,91 @@ include('../../app/controlador/historiaClinica/historiaClinicaShowCreateControla
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="tratamiento" role="tabpanel" aria-labelledby="tratamiento-tab">
+                                <!-- Formulario para notas de tratamiento -->
                                 <div class="form-group">
                                     <div class="row bg-white">
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="notas_padecimiento">Paciente</label>
-                                                <input class="form-control" value="<?= htmlspecialchars($nombre_completo) ?>"></input>
+                                                <input class="form-control" value="<?= $nombre_completo ?>"></input>
                                             </div>
                                             <div class="form-group">
-                                                <label>Solicitud de nuevos exámenes</label>
-                                                <input class="form-control" value="<?= htmlspecialchars($examenes) ?>"></input>
+                                                <label>Solicitud de nuevos examenes</label>
+                                                <input class="form-control" name="examenes" id="examenes value="<?= $examenes ?>"></input>
                                             </div>
                                             <div class="form-group">
                                                 <label for="notas_padecimiento">Tratamiento</label>
-                                                <input class="form-control" id="tratamiento" value="<?= htmlspecialchars($tratamiento) ?>"></input>
+                                                <input class="form-control" id="tratamiento" name="tratamiento" value="<?= $tratamiento ?>"></input>
                                             </div>
                                             <div class="form-group">
                                                 <label for="duracion">Duración del tratamiento</label>
-                                                <input class="form-control" value="<?= htmlspecialchars($duracion_tratamiento) ?>"></input>
+                                                <input class="form-control" value="<?= $duracion_tratamiento ?>"></input>
                                             </div>
+
                                         </div>
                                         <div class="col-md-6">
                                             <div id="formulario">
                                                 <div class="form-group">
                                                     <label>Medicamentos</label>
-                                                    <input type="text" class="form-control" value="<?= htmlspecialchars($medicamentos) ?>">
+                                                    <input type="text" class="form-control" value="<?= $medicamentos ?>">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="notas_padecimiento">Notas de Tratamiento</label>
-                                                    <textarea class="form-control" rows="4" style="resize: none;"><?= htmlspecialchars($notas_tratamiento) ?></textarea>
+                                                    <textarea class="form-control" rows="4" style="resize: none;"><?= $notas_tratamiento ?></textarea>
                                                 </div>
                                                 <br>
                                                 <div class="card">
                                                     <div class="form-group m-3">
                                                         <label>Motivo de la próxima cita</label>
-                                                        <input type="text" class="form-control" value="<?= htmlspecialchars($tipo_servicio) ?>">
+                                                        <input type="text" class="form-control" value="<?= $tipo_servicio ?>">
                                                     </div>
-                                                    <div class="form-group m-3">
-                                                        <label>Fecha de la cita</label>
-                                                        <input type="date" class="form-control" value="<?= htmlspecialchars($fecha) ?>">
-                                                    </div>
-                                                    <div class="form-group m-3">
-                                                        <label>Hora de la cita</label>
-                                                        <input type="time" class="form-control" value="<?= htmlspecialchars($hora) ?>">
+                                                    <div class="row">
+                                                        <div class="col-md-1"></div>
+                                                        <div class="col-md-5">
+                                                            <div class="form-group">
+                                                                <label>Próxima cita</label>
+                                                                <input type="date" class="form-control" value="<?= $fecha ?>">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-5">
+                                                            <div class="form-group">
+                                                                <label>Hora</label>
+                                                                <select class="form-control" name="hora" id="hora">
+                                                                    <option value="08:00 - 09:00" <?= ($hora == "08:00 - 09:00") ? 'selected' : '' ?>>08:00 - 09:00</option>
+                                                                    <option value="09:00 - 10:00" <?= ($hora == "09:00 - 10:00") ? 'selected' : '' ?>>09:00 - 10:00</option>
+                                                                    <option value="10:00 - 11:00" <?= ($hora == "10:00 - 11:00") ? 'selected' : '' ?>>10:00 - 11:00</option>
+                                                                    <option value="11:00 - 12:00" <?= ($hora == "11:00 - 12:00") ? 'selected' : '' ?>>11:00 - 12:00</option>
+                                                                    <option value="12:00 - 13:00" <?= ($hora == "12:00 - 13:00") ? 'selected' : '' ?>>12:00 - 13:00</option>
+                                                                    <option value="14:00 - 15:00" <?= ($hora == "14:00 - 15:00") ? 'selected' : '' ?>>14:00 - 15:00</option>
+                                                                    <option value="15:00 - 16:00" <?= ($hora == "15:00 - 16:00") ? 'selected' : '' ?>>15:00 - 16:00</option>
+                                                                    <option value="16:00 - 17:00" <?= ($hora == "16:00 - 17:00") ? 'selected' : '' ?>>16:00 - 17:00</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <button type="submit" class="btn btn-primary mt-3 mb-3">Actualizar</button>
                                         </div>
+                                        <br>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <br>
                     </form>
-                    <button type="button" id="agregar-archivo" class="btn btn-primary mt-3 mb-3">Agregar archivo</button>
+                    <button type="submit" class="btn btn-primary btn-block mt-5">Editar Consulta</button>
                 </div>
             </div>
         </div>
-        <div class="col-md-1"></div>
+
     </div>
+
 </div>
 
-<?php include('../layout/parte2.php'); ?>
-<?php include('../layout/mensaje.php'); ?>
 
+
+<?php include('../layout/parte2.php');
+include('../layout/mensaje.php'); ?>
 <script>
     $(document).ready(function() {
         var contador = 0;
@@ -180,7 +205,7 @@ include('../../app/controlador/historiaClinica/historiaClinicaShowCreateControla
         });
     }
 
-       function eliminarArchivo(id_prueba) {
+    function eliminarArchivo(id_prueba) {
         $.ajax({
             type: 'POST',
             url: '../../app/controlador/historiaClinica/historiaClinicaDeletePruebaControlador.php',

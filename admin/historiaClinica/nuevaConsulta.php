@@ -148,12 +148,12 @@ include('../../app/controlador/historiaClinica/historiaClinicaPacientesShowContr
                                             </div>
                                         </div>
                                         <br>
-                                        <button type="submit" class="btn btn-primary btn-block mt-5">Guardar Consulta</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <br>
+                        <button type="submit" class="btn btn-primary btn-block mt-5">Guardar Consulta</button>
                     </form>
                 </div>
             </div>
