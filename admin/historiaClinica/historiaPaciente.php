@@ -37,10 +37,8 @@ $edad = $fecha_nacimiento_dt->diff($fecha_dt)->y;
                     </div>
                     <div class="col-md-3">
                         <a href="nuevaConsulta.php?id_paciente=<?php echo $id_paciente; ?>" class="btn btn-primary btn-lg ml-auto"><i class="bi bi-plus-circle"></i> Nueva Consulta</a>
-
                         </button>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -70,7 +68,8 @@ $edad = $fecha_nacimiento_dt->diff($fecha_dt)->y;
                                 <?php
                                 $contador = 0;
                                 foreach ($historias as $historia) { ?>
-                                    <?php $id_historia = $historia['id_historia']; ?>
+                                    <?php $id_historia = $historia['id_historia']; 
+                                    ?>
                                     <tr>
                                         <td><?php echo $contador = $contador + 1; ?> </td>
                                         <td><?php echo $historia['fecha_consulta']; ?> </td>
@@ -80,12 +79,11 @@ $edad = $fecha_nacimiento_dt->diff($fecha_dt)->y;
                                         <td>
                                             <center>
                                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                                <a href="showConsulta.php?id_historia=<?php echo $id_historia; ?>" class="btn btn-outline-primary"><i class="bi bi-eye-fill"></i> Ver</a>
-                                                    <a href="updateConsulta.php?id_historia=<?php echo $id_historia; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i> Editar</a>
-                                                    <a href="#" class="btn btn-outline-primary" onclick="confirmarEliminacion(<?php echo $id_usuario; ?>);">
+                                                    <a href="showConsulta.php?id_historia=<?php echo $id_historia; ?>" class="btn btn-outline-primary"><i class="bi bi-eye-fill"></i> Ver</a>
+                                                    <a href="updateConsulta.php?id_historia=<?= $id_historia; ?>&id_paciente=<?= $id_paciente; ?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i> Editar</a>
+                                                    <a href="#" class="btn btn-outline-primary" onclick="confirmarEliminacion(<?php echo $id_historia; ?>, <?php echo $id_paciente; ?>)">
                                                         <i class="bi bi-trash3-fill"></i> Eliminar
                                                     </a>
-
                                                 </div>
                                             </center>
                                         </td>
@@ -175,7 +173,9 @@ $edad = $fecha_nacimiento_dt->diff($fecha_dt)->y;
                                 <?php
                                 $contador = 0;
                                 foreach ($historias as $historia) { ?>
-                                    <?php $id_historia = $historia['id_historia']; ?>
+                                    <?php $id_historia = $historia['id_historia']; 
+                                        $id_paciente = $historia['paciente_id'];
+                                    ?>
                                     <tr>
                                         <td><?php echo $contador = $contador + 1; ?> </td>
                                         <td><?php echo $historia['fecha_consulta']; ?> </td>
@@ -187,7 +187,6 @@ $edad = $fecha_nacimiento_dt->diff($fecha_dt)->y;
                                                     <a href="#" class="btn btn-outline-primary" onclick="confirmarEliminacion(<?php echo $id_usuario; ?>);">
                                                         <i class="bi bi-trash3-fill"></i> Eliminar
                                                     </a>
-
                                                 </div>
                                             </center>
                                         </td>
@@ -210,11 +209,40 @@ $edad = $fecha_nacimiento_dt->diff($fecha_dt)->y;
 
 </div>
 
-<?php 
+<?php
 include('../layout/parte2.php');
 include('../layout/mensaje.php'); ?>
 
 <script>
+    function confirmarEliminacion(id_historia, id_paciente) {
+        Swal.fire({
+            title: '¿Estás seguro de eliminar la consulta?',
+            text: "¡No podrás revertir esto!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: '¡Sí, eliminar!',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                type: 'POST',
+                url : '../../app/controlador/historiaClinica/historiaClinicaDeleteControlador.php',
+                data: {
+                    id_historia: id_historia,
+                    id_paciente: id_paciente
+                },
+                success: function(response) {
+                    const data = JSON.parse(response);
+                    if (data.success) {
+                        window.location.href = data.redirect_url;
+                    }
+                }
+            });
+            }
+        })
+    }
     $(function() {
         $("#example1").DataTable({
             "pageLength": 6,
@@ -266,7 +294,7 @@ include('../layout/mensaje.php'); ?>
             ],
         }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
     });
-    
+
     $(function() {
         $("#example2").DataTable({
             "pageLength": 3,
@@ -292,8 +320,8 @@ include('../layout/mensaje.php'); ?>
             "responsive": true,
             "lengthChange": true,
             "autoWidth": false,
-           
-            
+
+
         }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
     });
 </script>

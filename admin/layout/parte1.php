@@ -28,10 +28,13 @@ if (isset($_SESSION['sesion_email'])) {
 
 <style>
     .active {
-    background-color: #007bff; /* Color de fondo para el elemento activo */
-    color: #fff; /* Color de texto para el elemento activo */
-    border-radius: 5px; /* Ajusta el radio de borde si deseas esquinas redondeadas */
-}
+        background-color: #007bff;
+        /* Color de fondo para el elemento activo */
+        color: #fff;
+        /* Color de texto para el elemento activo */
+        border-radius: 5px;
+        /* Ajusta el radio de borde si deseas esquinas redondeadas */
+    }
 </style>
 <!DOCTYPE html>
 
@@ -139,9 +142,6 @@ if (isset($_SESSION['sesion_email'])) {
                         <a href="#" class="d-block font-weight-bold text-primary"><?= $nombre_completo_sesion." ".$apellido_completo_sesion; ?></a>
                     </div>
                 </div>
-
-
-
                 <!-- Sidebar Menu desplegable-->
                 <nav class="mt-2">
                     <!-- Usuarios -->
@@ -173,6 +173,12 @@ if (isset($_SESSION['sesion_email'])) {
                             <a href="<?php echo $URL; ?>/admin/pacientes" class="nav-link btn btn-outline-primary d-flex align-items-center">
                                 <i class="nav-icon bi bi-people-fill text-primary"></i>
                                 <p class="text-primary mb-0 ml-2">Pacientes</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?php echo $URL; ?>/admin/medicos" class="nav-link btn btn-outline-primary d-flex align-items-center">
+                                <i class="nav-icon fas fa-portrait text-primary"></i>
+                                <p class="text-primary mb-0 ml-2">Médicos</p>
                             </a>
                         </li>
                         <li class="nav-item">

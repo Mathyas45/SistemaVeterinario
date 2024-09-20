@@ -20,7 +20,6 @@ $color = "#2324ff";
 $tipo_servicio = $_POST['tipo_servicio'];
 $resultados_laboratorio = $_FILES['resultados_laboratorio']; // Array de archivos subidos
 
-
 // Verificar si se proporcionó algún valor para la hora
 if (!empty($hora) && !empty($fecha)) {
     // Si se proporcionó algún valor para la hora y la fecha, verificar si hay una reserva en esa fecha y hora
@@ -55,8 +54,8 @@ if (!empty($hora) && !empty($fecha)) {
                         $id_usuario = $resultado_usuario['id_usuario'];
 
                         // Preparar la consulta SQL para insertar la historia clínica en la tabla tb_historias
-                        $sentencia_historia = $pdo->prepare('INSERT INTO tb_historias (paciente_id, motivo_consulta, fecha_consulta, medico_responsable, diagnostico, notas_padecimiento,examenes, tratamiento, duracion_tratamiento, medicamentos, notas_tratamiento) 
-                                                VALUES (:id_paciente, :motivo_consulta, :fecha_consulta, :medico_responsable, :diagnostico, :notas_padecimiento, :examenes, :tratamiento, :duracion_tratamiento, :medicamentos, :notas_tratamiento)');
+                        $sentencia_historia = $pdo->prepare('INSERT INTO tb_historias (paciente_id, motivo_consulta, fecha_consulta, medico_responsable, diagnostico, notas_padecimiento,examenes, tratamiento, duracion_tratamiento, medicamentos, notas_tratamiento,estado) 
+                                                VALUES (:id_paciente, :motivo_consulta, :fecha_consulta, :medico_responsable, :diagnostico, :notas_padecimiento, :examenes, :tratamiento, :duracion_tratamiento, :medicamentos, :notas_tratamiento,1)');
                         $sentencia_historia->bindParam(':id_paciente', $id_paciente);
                         $sentencia_historia->bindParam(':motivo_consulta', $motivo_consulta);
                         $sentencia_historia->bindParam(':fecha_consulta', $fecha_consulta);
@@ -138,8 +137,8 @@ if (!empty($hora) && !empty($fecha)) {
             } else {
                 // Si no se proporcionó ningún valor para la hora y la fecha, continuar con el proceso de guardar la consulta
 
-                $sentencia_historia = $pdo->prepare('INSERT INTO tb_historias (paciente_id, motivo_consulta, fecha_consulta, medico_responsable, diagnostico, notas_padecimiento,examenes, tratamiento, duracion_tratamiento, medicamentos, notas_tratamiento) 
-                VALUES (:id_paciente, :motivo_consulta, :fecha_consulta, :medico_responsable, :diagnostico, :notas_padecimiento, :examenes, :tratamiento, :duracion_tratamiento, :medicamentos, :notas_tratamiento)');
+                $sentencia_historia = $pdo->prepare('INSERT INTO tb_historias (paciente_id, motivo_consulta, fecha_consulta, medico_responsable, diagnostico, notas_padecimiento,examenes, tratamiento, duracion_tratamiento, medicamentos, notas_tratamiento,estado) 
+                VALUES (:id_paciente, :motivo_consulta, :fecha_consulta, :medico_responsable, :diagnostico, :notas_padecimiento, :examenes, :tratamiento, :duracion_tratamiento, :medicamentos, :notas_tratamiento,1)');
                 $sentencia_historia->bindParam(':id_paciente', $id_paciente);
                 $sentencia_historia->bindParam(':motivo_consulta', $motivo_consulta);
                 $sentencia_historia->bindParam(':fecha_consulta', $fecha_consulta);

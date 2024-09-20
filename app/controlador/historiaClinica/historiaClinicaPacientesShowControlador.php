@@ -1,7 +1,7 @@
 <?php
 
 
-$sql  ="SELECT * FROM tb_pacientes where id = '$id_paciente'";
+$sql  ="SELECT * FROM tb_pacientes where id = '$id_paciente' ";
 $query = $pdo->prepare($sql);
 $query->execute();
 $pacientes = $query->fetchAll(PDO::FETCH_ASSOC);

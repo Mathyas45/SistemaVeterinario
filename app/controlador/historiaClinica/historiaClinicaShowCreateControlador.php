@@ -24,5 +24,6 @@ foreach( $historias as $historia ){
     $tipo_servicio = $historia['tipo_servicio'];
     $fecha = $historia['fecha_cita'];
     $hora = $historia['hora_cita']; 
+    $id_Reserva = $historia['id_reserva'];
 }
 

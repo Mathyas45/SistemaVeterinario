@@ -20,7 +20,7 @@ include('app/controlador/productos/listadoProductosControlador.php');
                 <div class="carousel-item active">
                     <img src="<?= $URL; ?>/public/img/Inkedrivas_dent-fondo_LI.jpg" class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
-                        <a href="<?php echo $URL . "/reservas.php"; ?>" class="btn btn-primary btn-lg d-sm-inline-block">Reservar Cita</a><br>
+                        <a href="<?= $URL . "/reservas.php"; ?>" class="btn btn-primary btn-lg d-sm-inline-block">Reservar Cita</a><br>
                     </div>
                 </div>
                 <div class="carousel-item">

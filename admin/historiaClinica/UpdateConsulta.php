@@ -1,5 +1,6 @@
 <?php
 $id_historia = $_GET['id_historia'];
+$id_paciente = $_GET['id_paciente'];
 include('../../app/config.php');
 include('../layout/parte1.php');
 include('../../app/controlador/historiaClinica/historiaClinicaShowCreateControlador.php');
@@ -34,13 +35,21 @@ include('../../app/controlador/historiaClinica/historiaClinicaShowCreateControla
                                         <h1>Actualizar Consulta:</h1>
                                         <div class="form-group">
                                             <label for="notas_padecimiento">Paciente</label>
-                                            <input class="form-control" name="nombre_paciente" id="nombre_paciente" value="<?= $nombre_completo ?>"></input>
+                                            <input class="form-control" name="nombre_paciente" id="nombre_paciente" readonly value="<?= $nombre_completo ?>"></input>
+                                            <input class="form-control" name="id_historia" id="id_historia" value="<?= $id_historia ?>" hidden></input>
+                                            <input class="form-control" name="id_paciente" id="id_paciente" value="<?= $id_paciente ?>" hidden></input>
+                                            <input class="form-control" name="id_reserva" id="id_reserva" value="<?= $id_Reserva ?>" hidden></input>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="motivo_consulta">Motivo de consulta</label>
-                                                    <input type="text" name="motivo_consulta" id="motivo_consulta" class="form-control" value="<?= $motivo_consulta ?>">
+                                                    <select class="form-control" name="motivo_consulta" id="motivo_consulta">
+                                                        <option value="nueva" <?= ($motivo_consulta == "nueva") ? 'selected' : '' ?>>Nueva consulta </option>
+                                                        <option value="control" <?= ($motivo_consulta == "control") ? 'selected' : '' ?>>Control </option>
+                                                        <option value="revaaluación" <?= ($motivo_consulta == "revaaluación") ? 'selected' : '' ?>>Reevaluación </option>
+                                                        <option value="seguimiento" <?= ($motivo_consulta == "seguimiento") ? 'selected' : '' ?>>Seguimiento </option>
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
@@ -81,10 +90,8 @@ include('../../app/controlador/historiaClinica/historiaClinicaShowCreateControla
                                                     <?php endif; ?>
                                                 </ul>
                                                 <br>
-                                                <div id="archivos">
-                                                    <input type="file" class="form-control-file archivo" name="resultados_laboratorio[]">
-                                                </div>
                                             </div>
+                                            <button type="button" class="btn btn-primary" id="agregar-archivo">Agregar Archivo</button>
                                         </div>
                                     </div>
                                 </div>
@@ -96,11 +103,11 @@ include('../../app/controlador/historiaClinica/historiaClinicaShowCreateControla
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="notas_padecimiento">Paciente</label>
-                                                <input class="form-control" value="<?= $nombre_completo ?>"></input>
+                                                <input class="form-control" value="<?= $nombre_completo ?>" readonly></input>
                                             </div>
                                             <div class="form-group">
                                                 <label>Solicitud de nuevos examenes</label>
-                                                <input class="form-control" name="examenes" id="examenes value="<?= $examenes ?>"></input>
+                                                <input class="form-control" name="examenes" id="examenes" value="<?= $examenes ?>"></input>
                                             </div>
                                             <div class="form-group">
                                                 <label for="notas_padecimiento">Tratamiento</label>
@@ -108,7 +115,7 @@ include('../../app/controlador/historiaClinica/historiaClinicaShowCreateControla
                                             </div>
                                             <div class="form-group">
                                                 <label for="duracion">Duración del tratamiento</label>
-                                                <input class="form-control" value="<?= $duracion_tratamiento ?>"></input>
+                                                <input class="form-control" id="duracion_tratamiento" name="duracion_tratamiento" value="<?= $duracion_tratamiento ?>"></input>
                                             </div>
 
                                         </div>
@@ -116,24 +123,27 @@ include('../../app/controlador/historiaClinica/historiaClinicaShowCreateControla
                                             <div id="formulario">
                                                 <div class="form-group">
                                                     <label>Medicamentos</label>
-                                                    <input type="text" class="form-control" value="<?= $medicamentos ?>">
+                                                    <input type="text" class="form-control" id="medicamentos" name="medicamentos" value="<?= $medicamentos ?>">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="notas_padecimiento">Notas de Tratamiento</label>
-                                                    <textarea class="form-control" rows="4" style="resize: none;"><?= $notas_tratamiento ?></textarea>
+                                                    <textarea class="form-control" rows="4" style="resize: none;" id="notas_tratamiento" name="notas_tratamiento"> <?= $notas_tratamiento ?></textarea>
                                                 </div>
                                                 <br>
                                                 <div class="card">
                                                     <div class="form-group m-3">
                                                         <label>Motivo de la próxima cita</label>
-                                                        <input type="text" class="form-control" value="<?= $tipo_servicio ?>">
+                                                        <select name="tipo_servicio" id="tipo_servicio" class="form-control">
+                                                            <option value="control" <?= ($tipo_servicio == "control") ? 'selected' : '' ?>>Control </option>
+                                                            <option value="revaluación" <?= ($tipo_servicio == "revaluación") ? 'selected' : '' ?>>Reevaluación </option>
+                                                        </select>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-md-1"></div>
                                                         <div class="col-md-5">
                                                             <div class="form-group">
                                                                 <label>Próxima cita</label>
-                                                                <input type="date" class="form-control" value="<?= $fecha ?>">
+                                                                <input type="date" class="form-control" id="fecha" name="fecha" value="<?= $fecha ?>">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-5">
@@ -161,8 +171,8 @@ include('../../app/controlador/historiaClinica/historiaClinicaShowCreateControla
                             </div>
                         </div>
                         <br>
+                        <button type="submit" class="btn btn-primary btn-block mt-5">Editar Consulta</button>
                     </form>
-                    <button type="submit" class="btn btn-primary btn-block mt-5">Editar Consulta</button>
                 </div>
             </div>
         </div>
@@ -177,15 +187,37 @@ include('../../app/controlador/historiaClinica/historiaClinicaShowCreateControla
 include('../layout/mensaje.php'); ?>
 <script>
     $(document).ready(function() {
+        // Contador para generar IDs únicos
         var contador = 0;
 
+        // Agregar un nuevo campo de entrada de archivos cuando se hace clic en el botón "Agregar Archivo"
         $('#agregar-archivo').click(function() {
             contador++;
-            $('<div class="form-group">' +
-                '<label for="resultados_laboratorio' + contador + '">Resultados de laboratorio:</label>' +
-                '<input type="file" class="form-control-file archivo" name="resultados_laboratorio[]" id="resultados_laboratorio' + contador + '" multiple>' +
-                '</div>').appendTo('#formulario #contenedor-archivos');
+            if (contador === 0) {
+                $('<div class="form-group">' +
+                    '<label for="resultados_laboratorio' + contador + '">Resultados de laboratorio:</label>' +
+                    '<div id="archivos">' +
+                    '<input type="file" class="form-control-file archivo" name="resultados_laboratorio[]">' +
+                    '</div>' +
+                    '<br>' +
+                    '</div>').appendTo('#formulario #contenedor-archivos');
+            } else {
+                $('<div class="form-group">' +
+                    '<label for="resultados_laboratorio' + contador + '">Resultados de laboratorio:</label>' +
+                    '<div id="archivos">' +
+                    '<input type="file" class="form-control-file archivo" name="resultados_laboratorio[]">' +
+                    '<button type="button" class="btn btn-danger eliminar_archivo">Borrar</button>' +
+                    '</div>' +
+                    '<br>' +
+                    '</div>').appendTo('#formulario #contenedor-archivos');
+            }
         });
+
+        // Eliminar un campo de archivo
+        $(document).on('click', '.eliminar_archivo', function() {
+            $(this).parent().remove();
+        });
+
     });
 
     function confirmarEliminar(id_prueba) {
